@@ -1,0 +1,164 @@
+public class Tk2 {
+
+    String actual;
+
+    public Tk2(String str1) {
+        this.actual=str1;
+    }
+
+    public char charAt(int index) {
+        char[] str = actual.toCharArray();
+        return str[index];
+    }
+    public int compareTo(String b) {
+        char[] str1 = actual.toCharArray();
+        char[] str2 = b.toCharArray();
+        int minlength = Math.min(actual.length(), b.length());
+        int i = 0;
+        int compareToResult = 0;
+        while (i < minlength) {
+            if (str1[i] != str2[i]) {
+                compareToResult = str1[i] - str2[i];
+                return compareToResult;
+            }
+            i++;
+        }
+        return compareToResult;
+    }
+    public  int indexOf(String ab) {
+        char[] str = actual.toCharArray();
+        char[] a = ab.toCharArray();
+        int indexfirst = indexOf(a[0]);
+        int index = indexfirst;
+        for(int i =0 ;i <a.length ;i ++) {
+            if(str[indexfirst] != a[i]){
+                return -1;
+            }
+            indexfirst++;
+        }
+        return index;
+    }
+    public  String copyValueOf(char[] a) {
+        return new String(a);
+    }
+    public String concat(String b) {
+        return actual+b;
+    }
+    public  boolean contentEquals(StringBuffer b) {
+        char[] str1 = actual.toCharArray();
+        for(int i = 0;i<actual.length();i++){
+            if(str1[i]!=b.charAt(i))
+                return false;
+        }
+        return true;
+    }
+    public  boolean endsWith(String b) {
+        return lastIndexOf(b)+b.length()==actual.length();
+    }
+    public  boolean equals(String b){
+        char[] str1 = actual.toCharArray();
+        char[] str2 = b.toCharArray();
+        for(int i = 0;i<actual.length();i++){
+            if(str1[i]!=str2[i])
+                return false;
+        }
+        return true;
+    }
+    public  boolean equalsIgnoreCase(String b){
+        return equals(this.toLowerCase());
+    }
+
+    public  int indexOf(char x) {
+        char[] str = actual.toCharArray();
+        for (int i=0; i<actual.length(); i++) {
+            if(str[i] == x) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public  boolean isEmpty(String str1) {
+        if (str1.length() == 0)
+            return true;
+        return false;
+    }
+    public  int lastIndexOf(String x) {
+        String string = reverse(actual);
+        String s = reverse(x);
+        int ans = string.indexOf(s)+x.length();
+        return actual.length()-ans;
+    }
+    public  String reverse (String a) {
+        int length = a.length();
+        char[] str = a.toCharArray();
+        char[] string = new char[length];
+        for(int i = 0; i<a.length(); i++) {
+            length--;
+            string[length] = str[i];
+        }
+        return copyValueOf(string);
+    }
+    public  boolean startsWith (String b) {
+        char[] str = actual.toCharArray();
+        char[] str1 = b.toCharArray();
+        for(int i =0 ; i<b.length(); i++) {
+            if(str1[i] != str[i]){
+                return false;
+            }
+        }
+        return true;
+    }
+    public  String toLowerCase() {
+        char[] s = actual.toCharArray();
+        int ascii;
+        for(int i = 0; i< actual.length(); i++){
+            if(!(s[i] >='a' && s[i]<='z')){
+                ascii=s[i]+32;
+                //to check if the calcuted ascii value is alphabet are not so that it eleminates convertion of special characters
+                if(ascii >= 97 && ascii <=122)
+                    s[i] = (char)ascii;
+            }
+        }
+        return copyValueOf(s);
+    }
+    public  String replace(char b, char c) {
+        char[] str = actual.toCharArray();
+        for( int i =0; i< actual.length(); i++) {
+            if(str[i] == b) {
+                str[i] = c;
+            }
+        }
+        return copyValueOf(str);
+    }
+    public  String toUpperCase() {
+        char[] s = actual.toCharArray();
+        int ascii;
+        for(int i = 0; i< actual.length(); i++){
+            if(!(s[i] >='A' && s[i]<='B')){
+                ascii=s[i]-32;
+                if(ascii >= 65 && ascii <=90)
+                    s[i] = (char)ascii;
+            }
+        }
+        return copyValueOf(s);
+    }
+    public  int codePointAt (int index) {
+        char[] s = actual.toCharArray();
+        return s[index];
+    }
+
+    public  int codePointBefore (int index) {
+        char[] s = actual.toCharArray();
+        return s[index-1];
+    }
+    public int codePointcount(int index1,int index2){
+        int count = 0;
+        char[]charArray=actual.toCharArray();
+        for(int i=index1;i<index2;i++){
+            count++;
+
+        }
+        return count;
+    }
+}
